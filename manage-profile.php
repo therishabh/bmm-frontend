@@ -7,6 +7,7 @@
             Edit Profile
         </div>
         <div class="card-body">
+            <?php echo strpos($_SERVER['REQUEST_URI'], "manage-profile.php") ?>
             <div class="row">
                 <div class="col-lg-4">
                 </div>
