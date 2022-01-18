@@ -1,0 +1,141 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/************** start **************/
+/* header */
+header {
+  height: 75px;
+  border-bottom: 1px solid #e9edf4;
+}
+header .header-wrap {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+header .header-wrap .logo-wrapper {
+  height: 100%;
+  width: 270px;
+  border-right: 1px solid #e9edf4;
+}
+header .header-wrap .logo-wrapper a {
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin-top: 20px;
+}
+header .header-wrap .logo-wrapper a img {
+  width: 190px;
+}
+
+header .header-wrap .user-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  margin-right: 30px;
+}
+
+.user-info-wrapper .logout-btn button {
+  border: 1px solid #f92b62;
+  background: transparent;
+  line-height: 19px;
+  font-size: 12px;
+  border-radius: 4px;
+  color: #f92b62;
+  transition: 0.4s all;
+}
+
+.user-info-wrapper .logout-btn button:hover {
+  background-color: #f92b62;
+  color: #fff;
+}
+
+/* header */
+/************** end **************/
+
+#body-wrapper {
+  display: flex;
+  justify-content: space-between;
+  min-height: calc(100vh - 75px);
+  background-color: #f0f0f5;
+}
+
+/************** start **************/
+/* left pannel section */
+#left-pannel {
+  padding: 10px;
+  width: 270px;
+  background-color: #fff;
+  border-right: 1px solid #e9edf4;
+}
+
+#left-pannel ul {
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+}
+
+#left-pannel ul li a {
+  text-decoration: none;
+  height: 50px;
+  display: block;
+  padding: 0 15px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+#left-pannel ul li a i {
+  margin-right: 5px;
+  color: #f92b62;
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+#left-pannel ul li a.active,
+#left-pannel ul li a:hover {
+  color: #f92b62;
+}
+
+/* left pannel section */
+/************** end **************/
+
+#main-body {
+  width: calc(100vw - 270px);
+  box-shadow: inset 0 0px 3px #cdcdcd;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+#dashboard-page .card-body {
+  padding: 25px;
+}
+
+#dashboard-page .stats-label-text {
+  font-size: 13px;
+  font-weight: 400;
+}
+#dashboard-page .stats-number {
+  font-size: 26px;
+  margin-top: 5px;
+}
+
+.services-page h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 400;
+}
