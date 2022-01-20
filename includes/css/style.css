@@ -233,7 +233,8 @@ label.error {
 /* page specific styling */
 .services-page .button-wrapper,
 .bank-info-page .button-wrapper,
-.pricing-page .button-wrapper {
+.pricing-page .button-wrapper,
+.timings-page .button-wrapper{
   display: flex;
   justify-content: flex-end;
 }
@@ -256,7 +257,11 @@ label.error {
   font-weight: 500;
   color: #f92b62;
 }
-.bank-info-page #resent-otp-btn{
+.bank-info-page #resent-otp-btn {
   cursor: pointer;
+}
+
+#timingTable tr td {
+  vertical-align: middle;
 }
 /* page specific styling */

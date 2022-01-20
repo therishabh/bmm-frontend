@@ -1,7 +1,9 @@
 <?php include('header.php') ?>
 <?php include('sidebar.php') ?>
 <section id="main-body">
-    <h1>Dashboard</h1>
+<div class="top-heading">
+        <h1>Dashboard</h1>
+    </div>
     <div class="row" id="dashboard-page">
         <div class="col-lg-3">
             <div class="card">
