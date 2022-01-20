@@ -28,7 +28,7 @@
                 </a>
             </div>
             <div class="user-info-wrapper">
-                <div class="user-name">Rishabh Agrawal</div>
+                <div class="user-name">Geetanjali Salon</div>
                 <div class="logout-btn">
                     <button>Logout</button>
                 </div>
