@@ -112,12 +112,18 @@ header .header-wrap .user-info-wrapper {
   padding: 20px;
 }
 
-h1 {
+.top-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.top-heading h1 {
   margin: 0;
   font-size: 20px;
   font-weight: 500;
   position: relative;
-  margin-bottom: 20px;
 }
 
 #dashboard-page .card-body {
@@ -134,8 +140,123 @@ h1 {
 }
 
 .services-page h4 {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 15px;
   color: #333;
   font-weight: 400;
 }
+
+.display-none {
+  display: none;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #f92b62;
+  border-color: #df2658;
+}
+.btn-check:active + .btn-primary,
+.btn-check:checked + .btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.show > .btn-primary.dropdown-toggle {
+  background-color: #f92b62;
+  border-color: #df2658;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #f92b62;
+  border-color: #df2658;
+}
+
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
+  color: #fff;
+  background-color: #f92b62;
+  border-color: #df2658;
+  box-shadow: 0 0 0 0.25rem rgb(249 43 98 / 50%);
+}
+
+.btn-check:active + .btn-primary:focus,
+.btn-check:checked + .btn-primary:focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgb(249 43 98 / 50%);
+}
+
+.card-header {
+  background: none;
+  padding: 1rem 1.5rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 0;
+  background-color: transparent;
+  border-bottom: 1px solid #e9edf4;
+  letter-spacing: 0.2px;
+  font-size: 18px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+.form-group label {
+  font-size: 14px;
+  color: #606060;
+}
+
+table thead tr {
+  background: #f1f1f1;
+}
+
+label.error {
+  font-size: 14px;
+  color: #b00020;
+  font-style: italic;
+}
+
+.loading-wrapper {
+  height: 500px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-wrapper img {
+  width: 200px;
+}
+
+/* page specific styling */
+.services-page .button-wrapper,
+.bank-info-page .button-wrapper,
+.pricing-page .button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pricing-page table tr td,
+.pricing-page table tr th {
+  vertical-align: middle;
+}
+
+.bank-info-page .form-group {
+  position: relative;
+}
+
+.bank-info-page #resent-otp-btn,
+.bank-info-page #resent-otp-counter {
+  position: absolute;
+  top: 33px;
+  right: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #f92b62;
+}
+.bank-info-page #resent-otp-btn{
+  cursor: pointer;
+}
+/* page specific styling */

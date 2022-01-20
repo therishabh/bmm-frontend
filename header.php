@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <!-- google fonts -->
     <link rel="stylesheet" href="./includes/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./includes/css/jquery.toast.css">
     <link rel="stylesheet" href="./includes/css/components.css">
     <link rel="stylesheet" href="./includes/css/style.css">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
