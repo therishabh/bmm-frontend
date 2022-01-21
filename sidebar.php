@@ -26,15 +26,15 @@
                 </a>
             </li>
             <li>
-                <a href="manage-amenities.php" class="<?php echo (str_contains($_SERVER['REQUEST_URI'], "manage-amenities.php")) ? 'active' : ''; ?>">
-                    <i class="fa fa-cogs" aria-hidden="true"></i>
-                    Manage Amenities
-                </a>
-            </li>
-            <li>
                 <a href="manage-pricing.php" class="<?php echo (str_contains($_SERVER['REQUEST_URI'], "manage-pricing.php")) ? 'active' : ''; ?>">
                     <i class="fa fa-inr" aria-hidden="true"></i>
                     Manage Pricing
+                </a>
+            </li>
+            <li>
+                <a href="manage-amenities.php" class="<?php echo (str_contains($_SERVER['REQUEST_URI'], "manage-amenities.php")) ? 'active' : ''; ?>">
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                    Manage Amenities
                 </a>
             </li>
             <li>
