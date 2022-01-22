@@ -14,6 +14,7 @@
     <!-- google fonts -->
     <link rel="stylesheet" href="./includes/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./includes/css/jquery.toast.css">
+    <link rel="stylesheet" href="./includes/css/zoom.css">
     <link rel="stylesheet" href="./includes/css/components.css">
     <link rel="stylesheet" href="./includes/css/style.css">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">

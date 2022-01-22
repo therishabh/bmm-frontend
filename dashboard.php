@@ -1,5 +1,7 @@
+
 <?php include('header.php') ?>
 <?php include('sidebar.php') ?>
+
 <section id="main-body">
 <div class="top-heading">
         <h1>Dashboard</h1>
