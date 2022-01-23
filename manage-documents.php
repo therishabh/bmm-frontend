@@ -140,7 +140,8 @@
                             trHTML +=
                                 '<tr><td>' + value.document_name +
                                 '</td><td>' + value.document_type +
-                                '</td><td>' + `<img src="${value.url}" class="img-thumbnail" />` +
+                                '</td><td>' + `<a href="${value.url}" class="btn btn-primary" download target="_blank" >Download</a>` +
+                                // '</td><td>' + `<img src="${value.url}" class="img-thumbnail" />` +
                                 '</td></tr>';
                         });
                         $('#documentData tbody').append(trHTML);
