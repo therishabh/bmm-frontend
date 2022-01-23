@@ -384,5 +384,13 @@ img.zoom-img {
     cursor: default;
 }
 
+.documents-table {
+    font-size: 14px;
+}
+
+.documents-table tr th {
+    width: 30%;
+}
+
 
 /* page specific styling */
