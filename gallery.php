@@ -83,7 +83,7 @@
                         error: function(error) {
                             $.toast({
                                 heading: 'Error',
-                                text: error.message,
+                                text: error.responseJSON.message,
                                 showHideTransition: 'slide',
                                 icon: 'error',
                             });
@@ -123,7 +123,7 @@
                         } else {
                             $.toast({
                                 heading: 'Error',
-                                text: error.message,
+                                text: error.responseJSON.message,
                                 showHideTransition: 'slide',
                                 icon: 'error',
                             });

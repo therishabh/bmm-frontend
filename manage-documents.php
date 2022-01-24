@@ -70,25 +70,6 @@
                         <td><input type="file" class="" name="document" /></td>
                         <td><button type="button" class="btn btn-primary uploadPersonalDocumentForm">Upload</button></td>
                     </tr>
-                    <tr>
-                        <td class="document-name">
-                            <select name="document-name-select" class="form-control">
-                                <option value="ID Proof">ID Proof</option>
-                                <option value="Address Proof">Address Proof</option>
-                            </select>
-                        </td>
-                        <td class="document-type">
-                            <select name="document-type-select" class="form-control">
-                                <option value="Aadhar Card">Aadhar Card</option>
-                                <option value="Pan Card">Pan Card</option>
-                                <option value="Driving License">Driving License</option>
-                                <option value="Voter ID Card">Voter ID Card</option>
-                                <option value="Passport">Passport</option>
-                            </select>
-                        </td>
-                        <td><input type="file" class="" name="document" /></td>
-                        <td><button type="button" class="btn btn-primary uploadPersonalDocumentForm">Upload</button></td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -141,7 +122,6 @@
                                 '<tr><td>' + value.document_name +
                                 '</td><td>' + value.document_type +
                                 '</td><td>' + `<a href="${value.url}" class="btn btn-primary" download target="_blank" >Download</a>` +
-                                // '</td><td>' + `<img src="${value.url}" class="img-thumbnail" />` +
                                 '</td></tr>';
                         });
                         $('#documentData tbody').append(trHTML);
@@ -184,7 +164,7 @@
                             } else {
                                 $.toast({
                                     heading: 'Error',
-                                    text: error.message,
+                                    text: error.responseJSON.message,
                                     showHideTransition: 'slide',
                                     icon: 'error',
                                 });
@@ -229,7 +209,7 @@
                             } else {
                                 $.toast({
                                     heading: 'Error',
-                                    text: error.message,
+                                    text: error.responseJSON.message,
                                     showHideTransition: 'slide',
                                     icon: 'error',
                                 });

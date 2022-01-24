@@ -7,4 +7,15 @@
 <script src="./includes/js/jquery.validate.min.js"></script>
 <script src="./includes/js/zoom.js"></script>
 <script src="./includes/js/jquery.toast.js"></script>
+<script>
+    $(function() {
+        const token = localStorage.getItem("salonToken");
+        if (token) {
+            
+        } else {
+            window.location.replace('index.php');
+        }
+    });
+</script>
+
 </html>

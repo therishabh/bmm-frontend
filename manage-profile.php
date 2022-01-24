@@ -20,7 +20,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input type="text" class="form-control" name="contact_person_mobile">
+                                <input type="text" class="form-control" name="contact_person_mobile" disabled>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
@@ -28,10 +28,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Gender</label>
-                                <select name="category" class="form-control">
+                                <select name="contact_person_gender" class="form-control">
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
-                                    <option value="unisex">Unisex</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -81,6 +80,16 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label>Salon Category</label>
+                                    <select name="category" class="form-control">
+                                        <option value="male">Male Only</option>
+                                        <option value="female">Female Only</option>
+                                        <option value="unisex">Unisex</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label>Salon Website</label>
                                     <input type="text" class="form-control" name="website">
                                 </div>
@@ -89,8 +98,8 @@
                                 <div class="form-group">
                                     <label>Opening Status</label>
                                     <select name="is_salon_open" class="form-control">
-                                        <option value="0">This place is opening soon</option>
                                         <option value="1">This place is already open</option>
+                                        <option value="0">This place is opening soon</option>
                                     </select>
                                 </div>
                             </div>
@@ -173,35 +182,26 @@
                     q: 'info,pan_info',
                 },
                 success: function(result) {
-                    $('[name=contact_person_name]').val(result.result.info.contact_person_name);
-                    $('[name=contact_person_mobile]').val(result.result.info.contact_person_mobile);
-                    $('[name=contact_person_email]').val(result.result.info.email_id);
-                    $('[name=category] option').each(function() {
-                        if ($(this).val() == result.result.info.category) {
-                            $(this).prop('selected', true);
-                        }
-                    });
-                    $('[name=i_am_owner] option').each(function() {
-                        if ($(this).val() == result.result.info.i_am_owner) {
-                            $(this).prop('selected', true);
-                        }
-                    });
-                    $('[name=is_salon_open] option').each(function() {
-                        if ($(this).val() == result.result.info.is_salon_open) {
-                            $(this).prop('selected', true);
-                        }
-                    });
-                    $('[name=salon_name]').val(result.result.info.salon_name);
-                    $('[name=website]').val(result.result.info.website);
-                    $('[name=address]').val(result.result.info.address);
-                    $('[name=city]').val(result.result.info.city);
-                    $('[name=state]').val(result.result.info.state);
-                    $('[name=pin_code]').val(result.result.info.pin_code);
-                    $('[name=std]').val(result.result.info.std);
-                    $('[name=landline_no]').val(result.result.info.landline_no);
-                    $('[name=pancard_number]').val(result.result.pan_info.pancard_number);
-                    $('[name=tin_number]').val(result.result.pan_info.tin_number);
-                    $('[name=tan_number]').val(result.result.pan_info.tan_number);
+                    const salon_info = result.result.info;
+                    $('#contactPersonForm [name=contact_person_name]').val(salon_info.contact_person_name);
+                    $('#contactPersonForm [name=contact_person_mobile]').val(salon_info.contact_person_mobile);
+                    $('#contactPersonForm [name=contact_person_email]').val(salon_info.email_id);
+                    $("#contactPersonForm [name=contact_person_gender]").val(salon_info.contact_person_gender);
+                    $("#contactPersonForm [name=i_am_owner]").val(salon_info.i_am_owner)
+
+                    $('#salonInfoForm [name=salon_name]').val(salon_info.salon_name);
+                    $('#salonInfoForm [name=website]').val(salon_info.website);
+                    $("#salonInfoForm [name=category]").val(salon_info.category)
+                    $("#salonInfoForm [name=is_salon_open]").val(salon_info.is_salon_open)
+                    $('#salonInfoForm [name=address]').val(salon_info.address);
+                    $('#salonInfoForm [name=city]').val(salon_info.city);
+                    $('#salonInfoForm [name=state]').val(salon_info.state);
+                    $('#salonInfoForm [name=pin_code]').val(salon_info.pin_code);
+                    $('#salonInfoForm [name=std]').val(salon_info.std);
+                    $('#salonInfoForm [name=landline_no]').val(salon_info.landline_no);
+                    $('#salonInfoForm [name=pancard_number]').val(result.result.pan_info.pancard_number);
+                    $('#salonInfoForm [name=tin_number]').val(result.result.pan_info.tin_number);
+                    $('#salonInfoForm [name=tan_number]').val(result.result.pan_info.tan_number);
                 }
             });
 
@@ -211,7 +211,7 @@
                     contact_person_name: "required",
                     contact_person_mobile: "required",
                     email_id: "required",
-                    category: "required",
+                    contact_person_gender: "required",
                     i_am_owner: "required",
                 },
                 submitHandler: function(form) {
@@ -223,11 +223,11 @@
                 let post_data = {
                     "token": token,
                     "basic_info": {
-                        "contact_person_name": $('[name=contact_person_name]').val(),
-                        "contact_person_mobile": $('[name=contact_person_mobile]').val(),
-                        "email_id": $('[name=email_id]').val(),
-                        "category": $('[name=category] option:selected').val(),
-                        "i_am_owner": $('[name=i_am_owner] option:selected').val(),
+                        "contact_person_name": $('#contactPersonForm [name=contact_person_name]').val(),
+                        "contact_person_mobile": $('#contactPersonForm [name=contact_person_mobile]').val(),
+                        "contact_person_gender": $('#contactPersonForm [name=contact_person_gender]').val(),
+                        "email_id": $('#contactPersonForm [name=email_id]').val(),
+                        "i_am_owner": $('#contactPersonForm [name=i_am_owner] option:selected').val(),
                     }
                 }
                 $.ajax({
@@ -247,7 +247,7 @@
                     error: function(error) {
                         $.toast({
                             heading: 'Error',
-                            text: error.message,
+                            text: error.responseJSON.message,
                             showHideTransition: 'slide',
                             icon: 'error',
                         });
@@ -260,15 +260,12 @@
                     salon_name: "required",
                     std: "required",
                     landline_no: "required",
-                    website: "required",
+                    category : "required",
                     is_salon_open: "required",
                     address: "required",
                     city: "required",
                     state: "required",
                     pin_code: "required",
-                    pancard_number: "required",
-                    tin_number: "required",
-                    tan_number: "required",
                 },
                 submitHandler: function(form) {
                     salonInfoSubmit();
@@ -280,20 +277,21 @@
                 let post_data = {
                     "token": token,
                     "basic_info": {
-                        "salon_name": $('[name=salon_name]').val(),
-                        "std": $('[name=std]').val(),
-                        "landline_no": $('[name=landline_no]').val(),
-                        "website": $('[name=website]').val(),
-                        "is_salon_open": $('[name=is_salon_open] option:selected').val(),
-                        "address": $('[name=address]').val(),
-                        "city": $('[name=city]').val(),
-                        "state": $('[name=state]').val(),
-                        "pin_code": $('[name=pin_code]').val(),
+                        "salon_name": $('#salonInfoForm [name=salon_name]').val(),
+                        "std": $('#salonInfoForm [name=std]').val(),
+                        "landline_no": $('#salonInfoForm [name=landline_no]').val(),
+                        "category": $('#salonInfoForm [name=category]').val(),
+                        "website": $('#salonInfoForm [name=website]').val(),
+                        "is_salon_open": $('#salonInfoForm [name=is_salon_open] option:selected').val(),
+                        "address": $('#salonInfoForm [name=address]').val(),
+                        "city": $('#salonInfoForm [name=city]').val(),
+                        "state": $('#salonInfoForm [name=state]').val(),
+                        "pin_code": $('#salonInfoForm [name=pin_code]').val(),
                     },
                     "pan_info": {
-                        "pancard_number": $('[name=pancard_number]').val(),
-                        "tin_number": $('[name=tin_number]').val(),
-                        "tan_number": $('[name=tan_number]').val(),
+                        "pancard_number": $('#salonInfoForm [name=pancard_number]').val(),
+                        "tin_number": $('#salonInfoForm [name=tin_number]').val(),
+                        "tan_number": $('#salonInfoForm [name=tan_number]').val(),
                     },
                 }
                 $.ajax({
@@ -313,7 +311,7 @@
                     error: function(error) {
                         $.toast({
                             heading: 'Error',
-                            text: error.message,
+                            text: error.responseJSON.message,
                             showHideTransition: 'slide',
                             icon: 'error',
                         });
