@@ -235,8 +235,7 @@ table thead tr {
 
 label.error {
     font-size: 14px;
-    color: #b00020;
-    font-style: italic;
+    color: red;
 }
 
 .loading-wrapper {
@@ -390,6 +389,36 @@ img.zoom-img {
 
 .documents-table tr th {
     width: 30%;
+}
+
+.table {
+    font-size: 14px;
+}
+
+ul.action-list {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+ul.action-list li {
+    list-style: none;
+}
+
+ul.action-list li i {
+    cursor: pointer;
+    transition: all 0.45s;
+}
+
+ul.action-list li i:hover {
+    color: #f92b62;
+}
+
+.input-group .input-group-text {
+    font-size: 14px;
 }
 
 

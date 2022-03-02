@@ -39,6 +39,12 @@
                 </a>
             </li>
             <li>
+                <a href="manage-discount-coupon.php" class="">
+                    <i class="fa fa-tag" aria-hidden="true"></i>
+                    Manage Discount/Coupon
+                </a>
+            </li>
+            <li>
                 <a href="bank-info.php" class="">
                     <i class="fa fa-university" aria-hidden="true"></i>
                     Bank Info
