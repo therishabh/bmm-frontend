@@ -27,6 +27,12 @@
                 </a>
             </li>
             <li>
+                <a href="manage-package.php" class="">
+                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                    Manage Package
+                </a>
+            </li>
+            <li>
                 <a href="manage-amenities.php" class="">
                     <i class="fa fa-cogs" aria-hidden="true"></i>
                     Manage Amenities

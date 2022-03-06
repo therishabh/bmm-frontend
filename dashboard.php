@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="stats-label-text">Total Bookings</div>
-                    <div class="stats-number">443</div>
+                    <div class="stats-number">0</div>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="stats-label-text">Today's Bookings</div>
-                    <div class="stats-number">73</div>
+                    <div class="stats-number">0</div>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="stats-label-text">Upcomming Bookings</div>
-                    <div class="stats-number">173</div>
+                    <div class="stats-number">0</div>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="stats-label-text">Today's Profile View</div>
-                    <div class="stats-number">373</div>
+                    <div class="stats-number">0</div>
                 </div>
             </div>
         </div>

@@ -17,34 +17,6 @@
         <img src="./includes/img/loader.gif" alt="loading">
     </div>
 </section>
-
-
-<!-- The Modal -->
-<div class="modal" id="editServiceModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="editServiceForm">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Service Name</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <input type="text" class="form-control" value="" name="edit_service" id="" data-type="" category="" />
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary float-right">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <?php include('footer.php') ?>
 
 <script>
@@ -90,11 +62,10 @@
                         token: token
                     },
                     success: function(result) {
-                        console.log(result);
                         for (let key in result) {
                             $("#salonServices").append(`
                             <div class="card mb-3">
-                                <div class="card-header" data="${key}">
+                                <div class="card-header">
                                     ${key.toUpperCase()}
                                 </div>
                                 <div class="card-body" id="${key+'-card-body-wrapper'}">
@@ -103,8 +74,9 @@
                             </div>`);
                             for (let category in result[key]) {
                                 $(`#salonServices #${key}-card-body-wrapper .row`).append(
-                                    `<div class="col-lg-3 mb-4">
-                                        <h4 data="${category}">${category}</h4>
+                                    `
+                                    <div class="col-lg-3 mb-4">
+                                        <h4>${category}</h4>
                                         <div class="checkbox-wrapper ${intoSlug(category)}"></div>
                                         <div class="add-service-wrapper">
                                         <input type="text" class="form-control" placeholder="Add new service" name="manual_service_name" />
@@ -127,13 +99,9 @@
                                             ${(selectedServices.indexOf(parseInt(val.id)) > -1) ? 'checked="true"' : ''}
                                             />
                                             <span class="custom-switch-indicator me-3"></span>
-                                            <span class="custom-switch-description mg-l-10" data="${val.name}"
+                                            <span class="custom-switch-description mg-l-10"
                                             >${val.name}</span>
                                         </label>
-                                        <div class="service-action">
-                                        <div class="edit-service"><i class="fa fa-pencil"></i></div>
-                                        <div class="remove-service"><i class="fa fa-trash"></i></div>
-                                        </div>
                                     </div>
                                     `);
                                 })
@@ -184,8 +152,8 @@
                 let post_data = {
                     "token": token,
                     "service_name": $(this).parents('.add-service-wrapper').find('[name=manual_service_name]').val(),
-                    "type": $(this).parents('.col-lg-3').find('h4').attr('data'),
-                    "category": $(this).parents('.card').find('.card-header').attr('data')
+                    "type": $(this).parents('.col-lg-3').find('h4').text(),
+                    "category": $(this).parents('.card').find('.card-header').text().toLowerCase()
                 }
                 $.ajax({
                     url: `${base_url}/salon/add-manual-service.php`,
@@ -195,7 +163,7 @@
                     success: function(data, item) {
                         $.toast({
                             heading: 'Success',
-                            text: data.message,
+                            text: 'Contact Person Info Updated',
                             showHideTransition: 'slide',
                             icon: 'success',
                             bgColor: '#179756',
@@ -214,91 +182,6 @@
                 });
             });
 
-            $('body').on('click', '.remove-service', function() {
-                var status = confirm("Are you sure you want to delete ?");
-                if (status == true) {
-                    var service_id = $(this).parents('.form-group').find('input').val();
-                    let removeService = {
-                        'token': token,
-                        'service_id': service_id,
-                    }
-                    $.ajax({
-                        url: base_url + '/salon/services/delete-manual-service.php',
-                        type: 'POST',
-                        dataType: 'JSON',
-                        data: JSON.stringify(removeService),
-                        success: function(response) {
-                            debugger;
-                            $.toast({
-                                heading: 'Success',
-                                text: response.message,
-                                showHideTransition: 'slide',
-                                icon: 'success',
-                                bgColor: '#179756',
-                            });
-                            $('#salonServices').html('');
-                            getSalonSelectedServices();
-                        },
-                        error: function(error) {
-                            toastr.error(error.responseJSON.message);
-                        }
-                    });
-                }
-            });
-
-            $('body').on('click', '.edit-service', function() {
-                $('#editServiceModal').modal('show');
-                $('#editServiceModal').find('input').val($(this).parents('.form-group').find('.custom-switch-description').attr('data'));
-                $('#editServiceModal').find('input').attr('id',$(this).parents('.form-group').find('input').attr('data-id'));
-                $('#editServiceModal').find('input').attr('data-type',$(this).parents('.col-lg-3').find('h4').attr('data'));
-                $('#editServiceModal').find('input').attr('category',$(this).parents('.card').find('.card-header').attr('data'));
-            });
-
-            $('#editServiceForm').validate({
-                rules: {
-                    edit_service: 'required',
-                },
-                submitHandler: function(form) {
-                    serviceInfoSubmit();
-                }
-            });
-
-            const serviceInfoSubmit = function() {
-                let post_data = {
-                    "token": token,
-                    "service_id": $('#editServiceModal').find('input').attr('id'),
-                    "service_name": $('#editServiceModal').find('input').val(),
-                    "type": $('#editServiceModal').find('input').attr('data-type'),
-                    "category": $('#editServiceModal').find('input').attr('category')
-                }
-                console.log(post_data);
-                $.ajax({
-                    url: `${base_url}/salon/services/update-manual-service.php`,
-                    type: 'POST',
-                    dataType: 'JSON',
-                    data: JSON.stringify(post_data),
-                    success: function(data, item) {
-                        $.toast({
-                            heading: 'Success',
-                            text: data.message,
-                            showHideTransition: 'slide',
-                            icon: 'success',
-                            bgColor: '#179756',
-                        });
-                        $('#editServiceModal').modal('hide');
-                        $('#salonServices').html('');
-                        getSalonSelectedServices();
-                    },
-                    error: function(error) {
-                        $.toast({
-                            heading: 'Error',
-                            text: error.responseJSON.message,
-                            showHideTransition: 'slide',
-                            icon: 'error',
-                        });
-                    }
-                });
-            }
             getSalonSelectedServices();
         } else {
             window.location.replace('index.php');

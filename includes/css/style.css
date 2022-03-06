@@ -409,8 +409,13 @@ ul.action-list li {
 }
 
 ul.action-list li i {
+    font-size: 18px;
+}
+
+ul.action-list li i {
     cursor: pointer;
     transition: all 0.45s;
+    color: #333;
 }
 
 ul.action-list li i:hover {
@@ -419,6 +424,78 @@ ul.action-list li i:hover {
 
 .input-group .input-group-text {
     font-size: 14px;
+}
+
+.add-service-wrapper {
+    display: flex;
+    gap: 0px;
+    border: 1px solid #f92b62;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.add-service-wrapper .form-control,
+.add-service-wrapper .btn {
+    border: 0px;
+    border-radius: 0px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.no-data-wrapper {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table thead th {
+    border-bottom: 0px;
+}
+
+#serviceList ul {
+    margin-bottom: 0px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-right-btn-list {
+    display: flex;
+    gap: 10px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.top-right-btn-list li {
+    list-style: none;
+}
+
+.checkbox-wrapper .form-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkbox-wrapper .form-group i {
+    color: #999;
+    transition: all 0.45s;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.checkbox-wrapper .form-group i:hover {
+    color: #f92b62;
+}
+
+.service-action {
+    display: flex;
+    gap: 10px;
 }
 
 

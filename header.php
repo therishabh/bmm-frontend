@@ -31,7 +31,7 @@
             <div class="user-info-wrapper">
                 <div class="user-name">Geetanjali Salon</div>
                 <div class="logout-btn">
-                    <button>Logout</button>
+                    <button onclick="logout();">Logout</button>
                 </div>
             </div>
         </div>
