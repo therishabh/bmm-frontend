@@ -9,7 +9,7 @@
             Manage Package
             <ul class="top-right-btn-list">
                 <li>
-                    <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#addPackageModal">Add Package</button>
+                    <a href="add-package.php" type="button" class="btn btn-primary float-right">Add Package</a>
                 </li>
             </ul>
         </div>
@@ -38,17 +38,15 @@
 
 
 <!-- The Modal -->
-<div class="modal" id="addPackageModal">
+<!-- <div class="modal" id="addPackageModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form id="addPackageForm">
-                <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Add Package</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
-                <!-- Modal body -->
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -90,7 +88,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary float-right">Submit</button>
@@ -98,7 +95,7 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- The Modal -->
 <div class="modal" id="servicesModal">
@@ -155,7 +152,7 @@
                           <td id="serviceList"><ul></ul></td>
                           <td class="text-center">
                           <ul class="action-list">
-                          <li><a href="edit-student.php?id=${value.id}" class="edit-student"><i class="fa fa-pencil"></i></a></li>
+                          <li><a href="edit-package.php?id=${value.id}"><i class="fa fa-pencil"></i></a></li>
                           <li class="remove-package"><i class="fa fa-trash"></i></li>
                           </ul>                         
                           </td></tr>`;
@@ -172,61 +169,6 @@
                 });
             }
             allPackage();
-
-            $('#addPackageForm').validate({
-                rules: {
-                    package_name: 'required',
-                    description: 'required',
-                    category: 'required',
-                    mrp_price: 'required',
-                    discounted_price: 'required',
-                },
-                submitHandler: function(form) {
-                    packageInfoSubmit();
-                }
-            });
-
-            const packageInfoSubmit = function() {
-                let post_data = {
-                    "token": token,
-                    "package_name": $('#addPackageModal [name=package_name]').val(),
-                    "description": $('#addPackageModal [name=description]').val(),
-                    "category": $('#addPackageModal [name=category]').val(),
-                    "mrp_price": $('#addPackageModal [name=mrp_price]').val(),
-                    "discounted_price": $('#addPackageModal [name=discounted_price]').val(),
-                    "services": [1, 2, 3]
-                }
-                PackageAjex(post_data);
-            }
-
-            const PackageAjex = function(post_data) {
-                $.ajax({
-                    url: base_url + '/salon/packages/add-package.php',
-                    type: 'POST',
-                    dataType: 'JSON',
-                    data: JSON.stringify(post_data),
-                    success: function(result) {
-                        $.toast({
-                            heading: 'Success',
-                            text: result.message,
-                            showHideTransition: 'slide',
-                            icon: 'success',
-                            bgColor: '#179756',
-                        });
-                        $('#packageData tbody').html('');
-                        $('#addPackageModal').modal('hide');
-                        allPackage();
-                    },
-                    error: function(error) {
-                        $.toast({
-                            heading: 'Error',
-                            text: error.responseJSON.message,
-                            showHideTransition: 'slide',
-                            icon: 'error',
-                        });
-                    }
-                });
-            }
 
             $('body').on('click', '.remove-package', function() {
                 var status = confirm("Are you sure you want to delete ?");
@@ -316,130 +258,6 @@
             //         }
             //     });
             // }
-
-            // ** service secton begin here ** //
-            var selectedServices = [];
-            var allServices = []
-
-            var intoSlug = function(str) {
-                return str.toLowerCase().split(' ').join('-').replace('&', '');
-            }
-
-            var getSalonSelectedServices = function() {
-                const url = `${base_url}/salon/get-info.php`;
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'JSON',
-                    data: {
-                        token: token,
-                        q: "services"
-                    },
-                    success: function(result) {
-                        const services = result.result.services;
-                        if (services && services.length > 0) {
-                            services.forEach(val => {
-                                selectedServices.push(parseInt(val.id));
-                            })
-                        }
-                        getAllServices();
-                    }
-                });
-            }
-
-            var getAllServices = function() {
-                const url = `${base_url}/common/get-services.php`;
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'JSON',
-                    data: {
-                        token: token
-                    },
-                    success: function(result) {
-                        console.log(result);
-                        for (let key in result) {
-                            $("#salonServices").append(`
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    ${key.toUpperCase()}
-                                </div>
-                                <div class="card-body" id="${key+'-card-body-wrapper'}">
-                                    <div class="row"></div>
-                                </div>
-                            </div>`);
-                            for (let category in result[key]) {
-                                $(`#salonServices #${key}-card-body-wrapper .row`).append(
-                                    `<div class="col-lg-3 mb-4">
-                                        <h4>${category}</h4>
-                                        <div class="checkbox-wrapper ${intoSlug(category)}"></div>
-                                    </div>
-                                    `
-                                );
-                                result[key][category].forEach(val => {
-                                    var x = `#salonServices #${key}-card-body-wrapper .${intoSlug(category)}`;
-                                    $(x).append(`
-                                    <div class="form-group mb-2">
-                                        <label class="custom-switch ps-0">
-                                            <input
-                                            type="checkbox"
-                                            name="custom-switch-checkbox"
-                                            class="custom-switch-input"
-                                            data-id="${val.id}"
-                                            value="${val.id}"
-                                            ${(selectedServices.indexOf(parseInt(val.id)) > -1) ? 'checked="true"' : ''} 
-                                            />
-                                            <span class="custom-switch-indicator me-3"></span>
-                                            <span class="custom-switch-description mg-l-10"
-                                            >${val.name}</span>
-                                        </label>
-                                    </div>
-                                    `);
-                                })
-                            }
-                        }
-                        $(".loading-wrapper").hide();
-                        $("#salonServices").fadeIn(1000);
-                        $(".services-page .button-wrapper button").fadeIn(1000);
-
-                    }
-                });
-            }
-
-            $("#salonServices").on('change', 'input[name="custom-switch-checkbox"]', function() {
-                const selectService = parseInt($(this).val());
-                if (selectedServices.indexOf(selectService) > -1) {
-                    const indexNo = selectedServices.indexOf(selectService);
-                    selectedServices.splice(indexNo, 1);
-                } else {
-                    selectedServices.push(selectService)
-                }
-            });
-
-            // $(".services-page").on('click', '.submit-btn', function() {
-            //     const url = `${base_url}/salon/add-info.php`;
-            //     const postData = JSON.stringify({
-            //         token: token,
-            //         services: selectedServices
-            //     });
-            //     $.ajax({
-            //         url: url,
-            //         type: 'POST',
-            //         dataType: 'JSON',
-            //         data: postData,
-            //         success: function(result) {
-            //             $.toast({
-            //                 heading: 'Success',
-            //                 text: result.message,
-            //                 showHideTransition: 'slide',
-            //                 icon: 'success',
-            //                 bgColor: '#179756',
-            //             });
-            //         }
-            //     });
-            // });
-            getSalonSelectedServices();
-            // ** service secton ends here ** //
 
         } else {
             window.location.replace('index.php');
