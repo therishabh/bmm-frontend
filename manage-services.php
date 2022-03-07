@@ -81,6 +81,7 @@
             }
 
             var getAllServices = function() {
+                $(".loading-wrapper").show();
                 const url = `${base_url}/common/get-services.php`;
                 $.ajax({
                     url: url,
@@ -106,6 +107,7 @@
                                     `<div class="col-lg-3 mb-4">
                                         <h4 data="${category}">${category}</h4>
                                         <div class="checkbox-wrapper ${intoSlug(category)}"></div>
+                                        <div class="add-service-btn">+ Add Service</div>
                                         <div class="add-service-wrapper">
                                         <input type="text" class="form-control" placeholder="Add new service" name="manual_service_name" />
                                         <button class="btn btn-primary addServiceBtn">Add</button>
@@ -130,10 +132,12 @@
                                             <span class="custom-switch-description mg-l-10" data="${val.name}"
                                             >${val.name}</span>
                                         </label>
-                                        <div class="service-action">
-                                        <div class="edit-service"><i class="fa fa-pencil"></i></div>
-                                        <div class="remove-service"><i class="fa fa-trash"></i></div>
-                                        </div>
+
+                                        ${val.is_manual ? `<div class="service-action">
+                                                <div class="edit-service"><i class="fa fa-pencil"></i></div>
+                                                <div class="remove-service"><i class="fa fa-trash"></i></div>
+                                                </div>` 
+                                        : ''}
                                     </div>
                                     `);
                                 })
@@ -146,6 +150,11 @@
                     }
                 });
             }
+
+            $('body').on('click', '.add-service-btn', function() {
+                $(this).hide();
+                $(this).next().css("display", "flex");;
+            })
 
             $("#salonServices").on('change', 'input[name="custom-switch-checkbox"]', function() {
                 const selectService = parseInt($(this).val());
@@ -181,6 +190,7 @@
             });
 
             $('body').on('click', '.addServiceBtn', function() {
+                let thisEle = $(this);
                 let post_data = {
                     "token": token,
                     "service_name": $(this).parents('.add-service-wrapper').find('[name=manual_service_name]').val(),
@@ -240,7 +250,12 @@
                             getSalonSelectedServices();
                         },
                         error: function(error) {
-                            toastr.error(error.responseJSON.message);
+                            $.toast({
+                                heading: 'Error',
+                                text: error.responseJSON.message,
+                                showHideTransition: 'slide',
+                                icon: 'error',
+                            });
                         }
                     });
                 }
@@ -249,9 +264,9 @@
             $('body').on('click', '.edit-service', function() {
                 $('#editServiceModal').modal('show');
                 $('#editServiceModal').find('input').val($(this).parents('.form-group').find('.custom-switch-description').attr('data'));
-                $('#editServiceModal').find('input').attr('id',$(this).parents('.form-group').find('input').attr('data-id'));
-                $('#editServiceModal').find('input').attr('data-type',$(this).parents('.col-lg-3').find('h4').attr('data'));
-                $('#editServiceModal').find('input').attr('category',$(this).parents('.card').find('.card-header').attr('data'));
+                $('#editServiceModal').find('input').attr('id', $(this).parents('.form-group').find('input').attr('data-id'));
+                $('#editServiceModal').find('input').attr('data-type', $(this).parents('.col-lg-3').find('h4').attr('data'));
+                $('#editServiceModal').find('input').attr('category', $(this).parents('.card').find('.card-header').attr('data'));
             });
 
             $('#editServiceForm').validate({
