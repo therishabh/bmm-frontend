@@ -107,8 +107,8 @@
                                                 ${categoryTd}
                                                 ${typeTd}
                                                 <td>${val.name}</td>
-                                                <td class="mrp_price"><input type="number" min="0" value="${val.mrp_price}" class="form-control"></td>
-                                                <td class="discounted_price"><input type="number" min="0" value="${val.discounted_price}" class="form-control"></td>
+                                                <td class="mrp_price"><input type="number" min="0" value="${val.mrp_price}" class="form-control" pattern="[0-9]" onkeypress="return !(event.charCode == 46)" /></td>
+                                                <td class="discounted_price"><input type="number" min="0" value="${val.discounted_price}" class="form-control" pattern="[0-9]" onkeypress="return !(event.charCode == 46)" /></td>
                                             </tr>`
                                         );
                                     });

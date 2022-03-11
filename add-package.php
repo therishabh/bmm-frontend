@@ -33,13 +33,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>MRP Price</label>
-                            <input type="text" class="form-control" name="mrp_price" />
+                            <input type="number" class="form-control" name="mrp_price" pattern="[0-9]" onkeypress="return !(event.charCode == 46)" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Discounted Price</label>
-                            <input type="text" class="form-control" name="discounted_price" />
+                            <input type="number" class="form-control" name="discounted_price" pattern="[0-9]" onkeypress="return !(event.charCode == 46)" />
                         </div>
                     </div>
                     <div class="col-md-12 services-page">

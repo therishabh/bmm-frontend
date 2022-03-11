@@ -225,7 +225,7 @@
             });
 
             $('body').on('click', '.remove-service', function() {
-                var status = confirm("Are you sure you want to delete ?");
+                var status = confirm("Are you sure to delete it?");
                 if (status == true) {
                     var service_id = $(this).parents('.form-group').find('input').val();
                     let removeService = {

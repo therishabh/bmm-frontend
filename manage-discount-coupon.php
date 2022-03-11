@@ -40,10 +40,10 @@
                                     <div class="form-group">
                                         <label>&nbsp;</label>
                                         <div class="input-group discount_percent_group">
-                                            <input type="text" class="form-control" name="discount_percent">
+                                            <input type="number" class="form-control" name="discount_percent" pattern="[0-9]" onkeypress="return !(event.charCode == 46)" />
                                             <span class="input-group-text">%</span>
                                         </div>
-                                        <input type="text" class="form-control display-none" name="flat_discount_amount">
+                                        <input type="number" class="form-control display-none" name="flat_discount_amount" pattern="[0-9]" onkeypress="return !(event.charCode == 46)" />
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +208,7 @@
             };
 
             $('body').on('click', '.remove_coupon', function() {
-                var status = confirm("Are you sure you want to delete ?");
+                var status = confirm("Are you sure to delete it?");
                 if (status == true) {
                     let remove_data = {
                         "token": token,

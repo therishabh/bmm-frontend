@@ -59,7 +59,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Salon Name</label>
-                                    <input type="text" class="form-control" name="salon_name">
+                                    <input type="text" class="form-control" name="salon_name" onkeydown="return /[a-z]/i.test(event.key)"
+ />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -73,7 +74,7 @@
                                     <div class="col-md-9 pl-0">
                                         <div class="form-group">
                                             <label>Landline No</label>
-                                            <input type="text" class="form-control" name="landline_no">
+                                            <input type="text" class="form-control" name="landline_no" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                                         </div>
                                     </div>
                                 </div>

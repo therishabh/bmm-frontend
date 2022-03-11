@@ -56,7 +56,7 @@
             getGalleryInfo();
 
             $('body').on('click', '.upload-img-box span', function() {
-                var status = confirm("Are you sure you want to delete ?");
+                var status = confirm("Are you sure to delete it?");
                 if (status == true) {
                     var imageId = $(this).parents('.upload-img-box').find('img').attr('id');
                     let deleteFile = {
