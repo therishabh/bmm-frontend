@@ -12,8 +12,6 @@
 
 <body>
     <?php include 'include/header.php' ?>
-
-
     <section class="login-section login-section-pro">
         <div class="container">
             <div class="row">
@@ -88,21 +86,18 @@
                         </form>
                     </div>
                 </section>
-
             </div>
         </div>
     </section>
-
     <?php include 'include/footer.php' ?>
     <script>
         let token = localStorage.getItem('salonToken');
         if (token) {
-            debugger;
             window.location.replace('../salon/dashboard.php');
         }
 
         $(function() {
-            let otpTiming = 5;
+            let otpTiming = 60;
             let tempToken;
             let signup_post_data = {
                 category: 'salon',

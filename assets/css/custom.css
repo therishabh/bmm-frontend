@@ -2088,7 +2088,7 @@ button:focus {
   background: #fff;
   color: #f92a63;
   font-size: 16px;
-  padding: 6px 50px;
+  padding: 6px 25px;
   width: auto;
   cursor: pointer;
   margin: 2px 0;
@@ -5409,4 +5409,13 @@ label.error {
   font-weight: 600;
   color: #fff;
   border-bottom: 1px solid #fb7398;
+  text-align: center;
+}
+
+#proLoginForm .or-text {
+  display: inline-block;
+  position: relative;
+  color: #fff;
+  padding: 0 10px;
+  font-weight: 600;
 }

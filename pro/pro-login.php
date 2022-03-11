@@ -15,105 +15,160 @@
         <div class="container">
             <div class="row">
                 <section class="login">
-                    <form class="login-form col-md-5 mx-auto" id="proLoginForm">
-                        <div class="form-group"><label>Sign In</label>
-                            <ul class="pro-user-type">
-                                <li> <label><input type="radio" name="salonType" id="salon" value="salon" checked /> Salon</label></li>
-                                <li> <label><input type="radio" name="salonType" id="makeup_artist" value="makeup_artist" /> Makeup Artist</label></li>
-                            </ul>
-
-                            <div class="form-group mt-3">
-                                <input type="text" placeholder="Enter Email/Phone" class="form-control form-field" name="email_mobile">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" placeholder="Enter Password" class="form-control form-field" name="password">
-                            </div>
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn login-btn">Sign In</button>
-                            </div>
-                            <p class="text-white">Don't Have An Account ? <a class="text-white" href="pro-register.php">Join Now</a></p>
+                    <form class="login-form login-pro-form col-md-5 mx-auto" id="proLoginForm" autocomplete="off">
+                        <div class="form-heading">Sign In</div>
+                        <ul class="pro-user-type">
+                            <li> <label><input type="radio" name="salonType" id="salon" value="salon" checked /> Salon</label></li>
+                            <li> <label><input type="radio" name="salonType" id="makeup_artist" value="makeup_artist" /> Makeup Artist</label></li>
+                        </ul>
+                        <div class="form-group mt-3">
+                            <label for="mobile_number_input">Mobile Number / Email id</label>
+                            <input type="text" id="mobile_number_input" placeholder="Enter Mobile Number or Email id" class="form-control" name="email_mobile">
                         </div>
-                </section>
-
-                <!-- <section class="login">
-                    <form class="login-form col-md-5 mx-auto">
                         <div class="form-group">
-                            <label class="mb-3">Enter Your MPIN</label>
-                          
-                            <div class="create-mpin login-process-box">
-                                <input type="text" placeholder="9999" class="form-control" maxlength="4">
-                            <div class="text-center">
-                                <button type="button" class="btn login-btn" onclick="window.open('user-manage-profile.php','_self')">Sign In</button>
+                            <label for="password_input">Password</label>
+                            <input type="password" id="password_input" placeholder="Enter Password" class="form-control" name="password">
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" id="signInBtn" class="btn login-btn">Sign In</button>
+                            <div class="or-text">
+                                <span>OR</span>
                             </div>
-                            </div>
-
-                            <div class="enter-otp login-process-box d-custom-none">
-                                <input type="text" placeholder="999999" class="form-control" maxlength="6">
-                            <div class="text-center">
-                                <p class="resend-otp">Resend OTP</p>
-                                <button type="button" class="btn login-btn" id="enterOtpBtn" disabled>Enter OTP</button>
-                            </div>
-                            </div>
-
-                            <p class="text-white">Don't Have An Account ? <a href="register.php" class="text-white"> Join Now</a></p>
+                            <button type="button" id="signin-with-otp-btn" class="btn login-btn">Sign In with OTP</button>
+                        </div>
+                        <div class="bar-text">
+                            <span>Don't Have An Account ?</span>
+                        </div>
+                        <div class="button-wrap">
+                            <a href="pro-register.php">
+                                <div class="sign-in-btn btn login-btn">Sign Up</div>
+                            </a>
                         </div>
                     </form>
-                </section> -->
 
+                    <form class="login-form login-pro-form d-custom-none col-md-5 mx-auto" id="proLoginStepTwo">
+                        <div class="form-heading">Sign In - Verify OTP</div>
+                        <div class="register-steps register-step2 mt-3">
+                            <div class="form-group">
+                                <label for="otp_text">OTP</label>
+                                <input type="text" id="otp_text" placeholder="Enter OTP" class="form-control" maxlength="6" name="otp">
+                            </div>
+                            <div class="form-group"></div>
+                            <label class="resend-seconds"> <span class></span> sec</label>
+                            <div class="cursor-pointer resend-btn">Resend OTP</div>
+                            <div class="form-group text-center mt-3">
+                                <div class="go-back-btn btn login-btn">Go Back</div>
+                                <button type="submit" id="verifyOTP" class="btn login-btn">Verify OTP</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
     </section>
-
     <?php include 'include/footer.php' ?>
     <script>
-        let token = localStorage.getItem('token');
+        let token = localStorage.getItem('salonToken');
         if (token) {
-            window.location.replace('salon/salon-ho-manage-brand.php');
+            window.location.replace('../salon/dashboard.php');
         }
         $(function() {
+            let otpTiming = 60;
             $("#proLoginForm").validate({
                 rules: {
-                    salonType: "required",
                     email_mobile: "required",
                     password: "required",
                 },
                 messages: {
-                    email_mobile: "Please enter email/phone",
-                    password: "Please enter password",
+                    email_mobile: "Please enter Mobile Number or Email id",
+                    password: "Please enter Password",
                 },
 
                 submitHandler: function(form) {
-                    loginSubmit();
+                    let category = $('#proLoginForm input[name=salonType]:checked').val();
+                    let post_data = {
+                        email_mobile: $('#proLoginForm [name=email_mobile]').val(),
+                        password: $('#proLoginForm [name=password]').val(),
+                        category: category,
+                    }
+                    $("#signInBtn").attr('disabled', true);
+                    $.ajax({
+                        url: base_url + 'salon/auth/login.php',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: JSON.stringify(post_data),
+                        success: function(result) {
+                            $("#signInBtn").removeAttr('disabled');
+                            toastr.success("Sign in successfully");
+                            localStorage.setItem("salonToken", result.token);
+                            window.location.replace('salon/dashboard.php');
+                        },
+                        error: function(error) {
+                            toastr.error(error.responseJSON.message);
+                        }
+                    });
                 }
             });
 
-            var loginSubmit = function() {
-                let category = $('input[name=salonType]:checked').val();
+            $("#signin-with-otp-btn").click(function() {
+                sendOTPForLogin();
+            });
+
+            function sendOTPForLogin() {
                 let post_data = {
-                    email_mobile: $('[name=email_mobile]').val(),
-                    password: $('[name=password]').val(),
-                    category: category,
+                    email_mobile: $("#proLoginForm [name=email_mobile]").val(),
+                    category: $('#proLoginForm input[name=salonType]:checked').val()
                 }
-                loginAjaxCall(post_data);
+                $("#signin-with-otp-btn").attr('disabled', true);
+                debugger;
+                if (!!post_data.email_mobile) {
+                    $.ajax({
+                        url: base_url + 'salon/auth/login-with-otp.php',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: JSON.stringify(post_data),
+                        success: function(result) {
+                            $("#signin-with-otp-btn").removeAttr('disabled');
+                            $("#proLoginStepTwo").show();
+                            $("#proLoginForm").hide();
+                            toastr.success(result.message);
+                            resendSetInterval();
+                        },
+                        error: function(error) {
+                            toastr.error(error.responseJSON.message);
+                        }
+                    });
+                } else {
+                    toastr.error("Please enter Mobile Number or Email id");
+                }
             }
 
-            var loginAjaxCall = function(post_data) {
-                $.ajax({
-                    url: base_url + 'auth/login.php',
-                    type: 'POST',
-                    dataType: 'JSON',
-                    data: JSON.stringify(post_data),
-                    success: function(result) {
-                        toastr.success(result.message);
-                        localStorage.removeItem('temp_token');
-                        localStorage.setItem("token", result.token);
-                        window.location.replace('salon/salon-ho-manage-brand.php');
-                    },
-                    error: function(error) {
-                        toastr.error(error.responseJSON.message);
+            function resendSetInterval() {
+                $('.resend-btn').hide();
+                $('.resend-seconds').show();
+                let resend_seconds = otpTiming;
+                $('.resend-seconds span').text(resend_seconds);
+                let interval = setInterval(function() {
+                    resend_seconds--;
+                    if (resend_seconds > 1) {
+                        $('.resend-seconds span').text(resend_seconds);
+                    } else {
+                        $('.resend-seconds').hide();
+                        $('.resend-btn').show();
+                        clearInterval(interval);
+                        return;
                     }
-                });
+                }, 1000);
             }
+
+            $('.resend-btn').click(function() {
+                sendOTPForLogin();
+            });
+
+            $("#proLoginStepTwo .go-back-btn").click(function() {
+                $("#proLoginStepTwo").hide();
+                $("#proLoginForm").show();
+            })
         });
     </script>
 </body>
