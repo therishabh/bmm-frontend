@@ -105,6 +105,7 @@
                             window.location.replace('../salon/dashboard.php');
                         },
                         error: function(error) {
+                            $("#signInBtn").removeAttr('disabled');
                             toastr.error(error.responseJSON.message);
                         }
                     });
