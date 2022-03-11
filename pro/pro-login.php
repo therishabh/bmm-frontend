@@ -74,6 +74,7 @@
         }
         $(function() {
             let otpTiming = 60;
+            let tempToken;
             $("#proLoginForm").validate({
                 rules: {
                     email_mobile: "required",
@@ -101,7 +102,7 @@
                             $("#signInBtn").removeAttr('disabled');
                             toastr.success("Sign in successfully");
                             localStorage.setItem("salonToken", result.token);
-                            window.location.replace('salon/dashboard.php');
+                            window.location.replace('../salon/dashboard.php');
                         },
                         error: function(error) {
                             toastr.error(error.responseJSON.message);
@@ -132,6 +133,7 @@
                             $("#proLoginStepTwo").show();
                             $("#proLoginForm").hide();
                             toastr.success(result.message);
+                            tempToken = result.token;
                             resendSetInterval();
                         },
                         error: function(error) {
@@ -168,7 +170,48 @@
             $("#proLoginStepTwo .go-back-btn").click(function() {
                 $("#proLoginStepTwo").hide();
                 $("#proLoginForm").show();
-            })
+            });
+
+            $("#proLoginStepTwo").validate({
+                rules: {
+                    otp: {
+                        required: true,
+                        number: true,
+                        minlength: 6
+                    }
+                },
+                messages: {
+                    otp: {
+                        required: "Please enter OTP",
+                        number: "Please enter a valid OTP",
+                        minlength: "Please enter 6 digit OTP"
+                    }
+                },
+                submitHandler: function(form) {
+                    let post_data = {
+                        otp: $('#proLoginStepTwo input[name=otp]').val(),
+                        token: tempToken
+                    }
+                    $("#verifyOTP").attr('disabled', true);
+                    $.ajax({
+                        url: base_url + 'salon/auth/verify-otp.php',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: JSON.stringify(post_data),
+                        success: function(result) {
+                            toastr.success('OTP successfully verified');
+                            $("#verifyOTP").removeAttr('disabled');
+                            localStorage.setItem("salonToken", result.token);
+                            window.location.replace('../salon/dashboard.php');
+                        },
+                        error: function(error) {
+                            $("#verifyOTP").removeAttr('disabled');
+                            toastr.error(error.responseJSON.message);
+                        }
+                    });
+                }
+            });
+
         });
     </script>
 </body>
