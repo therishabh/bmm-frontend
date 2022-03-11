@@ -12,7 +12,26 @@
     $(function() {
         const token = localStorage.getItem("salonToken");
         if (token) {
-            
+            const salon_name = localStorage.getItem('salonName');
+            if (!salon_name) {
+                const url = `${base_url}/salon/get-info.php`;
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    data: {
+                        token: token,
+                        q: 'info',
+                    },
+                    success: function(result) {
+                        const salon_info = result.result.info;
+                        localStorage.setItem('salonName', salon_info.salon_name);
+                        $("#headerSalonName").text(salon_info.salon_name);
+                    }
+                });
+            } else {
+                $("#headerSalonName").text(salon_name);
+            }
         } else {
             window.location.replace('../');
         }

@@ -59,8 +59,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Salon Name</label>
-                                    <input type="text" class="form-control" name="salon_name" onkeydown="return /[a-z]/i.test(event.key)"
- />
+                                    <input type="text" class="form-control" name="salon_name" onkeydown="return /[a-z]/i.test(event.key)" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -185,7 +184,7 @@
                 success: function(result) {
                     const salon_info = result.result.info;
                     $('#contactPersonForm [name=contact_person_name]').val(salon_info.contact_person_name);
-                    $('#contactPersonForm [name=contact_person_mobile]').val(salon_info.contact_person_mobile);
+                    $('#contactPersonForm [name=contact_person_mobile]').val(salon_info.mobile_no);
                     $('#contactPersonForm [name=contact_person_email]').val(salon_info.email_id);
                     $("#contactPersonForm [name=contact_person_gender]").val(salon_info.contact_person_gender);
                     $("#contactPersonForm [name=i_am_owner]").val(salon_info.i_am_owner)
@@ -261,7 +260,7 @@
                     salon_name: "required",
                     std: "required",
                     landline_no: "required",
-                    category : "required",
+                    category: "required",
                     is_salon_open: "required",
                     address: "required",
                     city: "required",

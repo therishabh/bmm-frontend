@@ -34,6 +34,7 @@
                             <div class="or-text">
                                 <span>OR</span>
                             </div>
+                            <button type="button" id="timer-btn" class="btn login-btn"><span></span> sec</button>
                             <button type="button" id="signin-with-otp-btn" class="btn login-btn">Sign In with OTP</button>
                         </div>
                         <div class="bar-text">
@@ -75,6 +76,7 @@
         $(function() {
             let otpTiming = 60;
             let tempToken;
+            let interval;
             $("#proLoginForm").validate({
                 rules: {
                     email_mobile: "required",
@@ -117,12 +119,12 @@
             });
 
             function sendOTPForLogin() {
+                $('#proLoginStepTwo input[name=otp]').val("")
                 let post_data = {
                     email_mobile: $("#proLoginForm [name=email_mobile]").val(),
                     category: $('#proLoginForm input[name=salonType]:checked').val()
                 }
                 $("#signin-with-otp-btn").attr('disabled', true);
-                debugger;
                 if (!!post_data.email_mobile) {
                     $.ajax({
                         url: base_url + 'salon/auth/login-with-otp.php',
@@ -149,15 +151,21 @@
             function resendSetInterval() {
                 $('.resend-btn').hide();
                 $('.resend-seconds').show();
+                $("#signin-with-otp-btn").hide();
+                $("#timer-btn").show();
                 let resend_seconds = otpTiming;
                 $('.resend-seconds span').text(resend_seconds);
-                let interval = setInterval(function() {
+                $('#timer-btn span').text(resend_seconds);
+                interval = setInterval(function() {
                     resend_seconds--;
                     if (resend_seconds > 1) {
                         $('.resend-seconds span').text(resend_seconds);
+                        $('#timer-btn span').text(resend_seconds);
                     } else {
                         $('.resend-seconds').hide();
                         $('.resend-btn').show();
+                        $("#signin-with-otp-btn").show();
+                        $("#timer-btn").hide();
                         clearInterval(interval);
                         return;
                     }
@@ -200,6 +208,7 @@
                         dataType: 'JSON',
                         data: JSON.stringify(post_data),
                         success: function(result) {
+                            clearInterval(interval);
                             toastr.success('OTP successfully verified');
                             $("#verifyOTP").removeAttr('disabled');
                             localStorage.setItem("salonToken", result.token);
