@@ -99,7 +99,8 @@
 
                 fd.append('token', token);
                 var totalFiles = document.getElementById('fileInput').files.length;
-                for (var i = 0; i < totalFiles; i++) {
+                if (!totalFiles == ''){
+                    for (var i = 0; i < totalFiles; i++) {
                     fd.append('files[]', document.getElementById('fileInput').files[i]);
                 }
                 $.ajax({
@@ -130,6 +131,11 @@
                         }
                     },
                 });
+                }
+                else{
+                    alert('Please select a file.');
+                }
+                
             });
 
         } else {

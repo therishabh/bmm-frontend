@@ -172,7 +172,7 @@
                         },
                     });
                 } else {
-                    toastr.error("Please select a file.");
+                    alert("Please select a file.");
                 }
             });
 
@@ -217,7 +217,7 @@
                         },
                     });
                 } else {
-                    toastr.error("Please select a file.");
+                    alert("Please select a file.");
                 }
             });
         } else {

@@ -2,11 +2,11 @@
 <?php include('sidebar.php') ?>
 <section id="main-body">
     <div class="top-heading">
-        <h1>Add Package</h1>
+        <h1>Edit Package</h1>
     </div>
     <div class="card">
         <div class="card-body">
-            <form id="addPackageForm">
+            <form id="editPackageForm">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -63,8 +63,83 @@
     $(function() {
         const token = localStorage.getItem("salonToken");
         if (token) {
+            const package_id = document.location.search.substr(4);
 
-           
+            const allPackage = function() {
+                $.ajax({
+                    url: `${base_url}/salon/packages/get-package-info.php`,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    data: {
+                        token: token,
+                        package_id: package_id
+                    },
+                    success: function(result) {
+                        console.log(result.result);
+                        result = result.result;
+                        $('[name=package_name]').val(result.package_name);
+                        $('[name=description]').val(result.description);
+                        $('[name=category]').val(result.category);
+                        $('[name=mrp_price]').val(result.mrp_price);
+                        $('[name=discounted_price]').val(result.discounted_price);
+                    }
+                });
+            }
+            allPackage();
+
+            $('#editPackageForm').validate({
+                rules: {
+                    package_name: 'required',
+                    description: 'required',
+                    category: 'required',
+                    mrp_price: 'required',
+                    discounted_price: 'required',
+                },
+                submitHandler: function(form) {
+                    packageInfoSubmit();
+                }
+            });
+
+            const packageInfoSubmit = function() {
+                let post_data = {
+                    "token": token,
+                    "package_id": package_id,
+                    "package_name": $('[name=package_name]').val(),
+                    "description": $('[name=description]').val(),
+                    "category": $('[name=category]').val(),
+                    "mrp_price": $('[name=mrp_price]').val(),
+                    "discounted_price": $('[name=discounted_price]').val(),
+                    "services": selectedServices
+                }
+                PackageAjex(post_data);
+            }
+
+            const PackageAjex = function(post_data) {
+                $.ajax({
+                    url: base_url + '/salon/packages/update-package.php',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: JSON.stringify(post_data),
+                    success: function(result) {
+                        $.toast({
+                            heading: 'Success',
+                            text: result.message,
+                            showHideTransition: 'slide',
+                            icon: 'success',
+                            bgColor: '#179756',
+                        });
+                        window.location.replace('manage-package.php');
+                    },
+                    error: function(error) {
+                        $.toast({
+                            heading: 'Error',
+                            text: error.responseJSON.message,
+                            showHideTransition: 'slide',
+                            icon: 'error',
+                        });
+                    }
+                });
+            }
 
             // ** service secton begin here ** //
             var selectedServices = [];
@@ -217,62 +292,8 @@
                 }
             });
 
-         
             getSalonSelectedServices();
             // ** service secton ends here ** //
-
-            $('#addPackageForm').validate({
-                rules: {
-                    package_name: 'required',
-                    description: 'required',
-                    category: 'required',
-                    mrp_price: 'required',
-                    discounted_price: 'required',
-                },
-                submitHandler: function(form) {
-                    packageInfoSubmit();
-                }
-            });
-
-            const packageInfoSubmit = function() {
-                let post_data = {
-                    "token": token,
-                    "package_name": $('[name=package_name]').val(),
-                    "description": $('[name=description]').val(),
-                    "category": $('[name=category]').val(),
-                    "mrp_price": $('[name=mrp_price]').val(),
-                    "discounted_price": $('[name=discounted_price]').val(),
-                    "services": selectedServices
-                }
-                console.log(post_data);
-            }
-
-            const PackageAjex = function(post_data) {
-                $.ajax({
-                    url: base_url + '/salon/packages/add-package.php',
-                    type: 'POST',
-                    dataType: 'JSON',
-                    data: JSON.stringify(post_data),
-                    success: function(result) {
-                        $.toast({
-                            heading: 'Success',
-                            text: result.message,
-                            showHideTransition: 'slide',
-                            icon: 'success',
-                            bgColor: '#179756',
-                        });
-                        window.location.replace('manage-package.php');
-                    },
-                    error: function(error) {
-                        $.toast({
-                            heading: 'Error',
-                            text: error.responseJSON.message,
-                            showHideTransition: 'slide',
-                            icon: 'error',
-                        });
-                    }
-                });
-            }
 
         } else {
             window.location.replace('index.php');

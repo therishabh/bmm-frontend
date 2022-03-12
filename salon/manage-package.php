@@ -139,9 +139,11 @@
                         token: token
                     },
                     success: function(result) {
+                        console.log(result.result[0].services);
                         // console.log(result.result[0].services);
                         let tr = '';
                         let serviceList = '';
+                        let i = 0;
                         $.each(result.result, function(key, value) {
                             tr += `<tr>
                           <td> ${value.package_name} <span class="service-id d-none">${value.id}</span></td>
@@ -154,15 +156,17 @@
                           <ul class="action-list">
                           <li><a href="edit-package.php?id=${value.id}"><i class="fa fa-pencil"></i></a></li>
                           <li class="remove-package"><i class="fa fa-trash"></i></li>
-                          </ul>                         
+                          </ul>
                           </td></tr>`;
                         });
                         $(".table-loading-wrap").addClass('display-none');
                         $('#packageData tbody').append(tr);
 
-                        $.each(result.result[0].services, function(key, value) {
-                            serviceList += `<li>${value.name}</li>`;
-                        });
+                        for (let i = 0; i < result.result.length; i++) {
+                            $.each(result.result[i].services, function(key, value) {
+                                serviceList += `<li>${value.name}</li>`;
+                            });
+                        }
                         $('#serviceList ul').append(serviceList);
 
                     }

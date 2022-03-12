@@ -7,7 +7,7 @@
 
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" id="couponTitle">
                 Create Coupon
             </div>
             <div class="card-body">
@@ -124,11 +124,11 @@
                             trHTML +=
                                 `<tr>
                                 <td class="coupon_code">${value.coupon_code}</td>
-                                <td>${value.discount_percent}</td>                     
-                                <td>${value.flat_discount_amount}</td>
-                                <td>${value.minimum_amount}</td>
-                                <td>${value.start_at}</td>
-                                <td>${value.expire_at}</td>
+                                <td class="discount_percent">${value.discount_percent}</td>                     
+                                <td class="flat_discount_amount">${value.flat_discount_amount}</td>
+                                <td class="minimum_amount">${value.minimum_amount}</td>
+                                <td class="start_at">${value.start_at}</td>
+                                <td class="expire_at">${value.expire_at}</td>
                                 <td>
                                 <ul class="action-list">
                                 <li><i class="fa fa-pencil edit_coupon"></i></li>
@@ -222,7 +222,7 @@
                         success: function(data, item) {
                             $.toast({
                                 heading: 'Success',
-                                text: 'Coupon Created',
+                                text: 'Deleted Successfully',
                                 showHideTransition: 'slide',
                                 icon: 'success',
                                 bgColor: '#179756',
@@ -248,7 +248,13 @@
                 coupon_id = $(this).parents('tr').find('.coupon_id').text();
                 $('#couponBtn').hide();
                 $('#couponUpdateBtn').show();
-                $('[name=coupon_code]').val($(this).parents('tr').find('.coupon_code').text());
+                $('#couponTitle').text('Update Coupon');
+                $('[name=coupon_code]').val($(this).parents('tr').find('.coupon_code').text()).focus();
+                $('[name=minimum_amount]').val($(this).parents('tr').find('.minimum_amount').text());
+                $('[name=discount_percent]').val($(this).parents('tr').find('.discount_percent').text());
+                $('[name=flat_discount_amount]').val($(this).parents('tr').find('.flat_discount_amount').text());
+                $('[name=start_at]').val($(this).parents('tr').find('.start_at').text());
+                $('[name=expire_at]').val($(this).parents('tr').find('.expire_at').text());
             });
 
             $('#couponUpdateBtn').click(function(){
