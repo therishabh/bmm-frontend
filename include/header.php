@@ -1863,7 +1863,7 @@
                 <li><a href="blog.php">Blog </a>
                 </li>
 
-                <li class="p-relative"><a href="pro/">BMM PRO
+                <li class="p-relative"><a href="pro/pro-login.php">BMM PRO
                         <span class="new-tag new">FREE</span>
                     </a>
                     <!-- <div class="submenu submenu-adsalon">

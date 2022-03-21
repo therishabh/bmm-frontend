@@ -11,62 +11,172 @@
 
 <body>
     <?php include 'include/header.php' ?>
+    <section class="slide-section">
+        <div id="slides" class="carousel slide" data-ride="carousel">
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../assets/images/pro-slide1.jpg" alt="">
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#slides" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#slides" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </section>
     <section class="login-section login-section-pro">
         <div class="container">
             <div class="row">
-                <section class="login">
-                    <form class="login-form login-pro-form col-md-5 mx-auto" id="proLoginForm" autocomplete="off">
-                        <div class="form-heading">Sign In</div>
-                        <ul class="pro-user-type">
-                            <li> <label><input type="radio" name="salonType" id="salon" value="salon" checked /> Salon</label></li>
-                            <li> <label><input type="radio" name="salonType" id="makeup_artist" value="makeup_artist" /> Makeup Artist</label></li>
-                        </ul>
-                        <div class="form-group mt-3">
-                            <label for="mobile_number_input">Mobile Number / Email id</label>
-                            <input type="text" id="mobile_number_input" placeholder="Enter Mobile Number or Email id" class="form-control" name="email_mobile">
-                        </div>
-                        <div class="form-group">
-                            <label for="password_input">Password</label>
-                            <input type="password" id="password_input" placeholder="Enter Password" class="form-control" name="password">
-                        </div>
-                        <div class="form-group text-center">
-                            <button type="submit" id="signInBtn" class="btn login-btn">Sign In</button>
-                            <div class="or-text">
-                                <span>OR</span>
+                <div class="col-md-5">
+                    <section class="login">
+                        <form class="login-form login-pro-form" id="proLoginForm" autocomplete="off">
+                            <div class="form-heading">Sign In</div>
+                            <ul class="pro-user-type">
+                                <li> <label><input type="radio" name="salonType" id="salon" value="salon" checked /> Salon</label></li>
+                                <li> <label><input type="radio" name="salonType" id="makeup_artist" value="makeup_artist" /> Makeup Artist</label></li>
+                            </ul>
+                            <div class="form-group mt-3">
+                                <label for="mobile_number_input">Mobile Number / Email id</label>
+                                <input type="text" id="mobile_number_input" placeholder="Enter Mobile Number or Email id" class="form-control" name="email_mobile">
                             </div>
-                            <button type="button" id="timer-btn" class="btn login-btn"><span></span> sec</button>
-                            <button type="button" id="signin-with-otp-btn" class="btn login-btn">Sign In with OTP</button>
-                        </div>
-                        <div class="bar-text">
-                            <span>Don't Have An Account ?</span>
-                        </div>
-                        <div class="button-wrap">
-                            <a href="pro-register.php">
-                                <div class="sign-in-btn btn login-btn">Sign Up</div>
-                            </a>
-                        </div>
-                    </form>
-
-                    <form class="login-form login-pro-form d-custom-none col-md-5 mx-auto" id="proLoginStepTwo">
-                        <div class="form-heading">Sign In - Verify OTP</div>
-                        <div class="register-steps register-step2 mt-3">
                             <div class="form-group">
-                                <label for="otp_text">OTP</label>
-                                <input type="text" id="otp_text" placeholder="Enter OTP" class="form-control" maxlength="6" name="otp">
+                                <label for="password_input">Password</label>
+                                <input type="password" id="password_input" placeholder="Enter Password" class="form-control" name="password">
                             </div>
-                            <div class="form-group"></div>
-                            <label class="resend-seconds"> <span class></span> sec</label>
-                            <div class="cursor-pointer resend-btn">Resend OTP</div>
-                            <div class="form-group text-center mt-3">
-                                <div class="go-back-btn btn login-btn">Go Back</div>
-                                <button type="submit" id="verifyOTP" class="btn login-btn">Verify OTP</button>
+                            <div class="form-group text-center">
+                                <button type="submit" id="signInBtn" class="btn login-btn">Sign In</button>
+                                <div class="or-text">
+                                    <span>OR</span>
+                                </div>
+                                <button type="button" id="timer-btn" class="btn login-btn"><span></span> sec</button>
+                                <button type="button" id="signin-with-otp-btn" class="btn login-btn">Sign In with OTP</button>
                             </div>
-                        </div>
-                    </form>
-                </section>
+                            <div class="bar-text">
+                                <span>Don't Have An Account ?</span>
+                            </div>
+                            <div class="button-wrap">
+                                <a href="pro-register.php">
+                                    <div class="sign-in-btn btn login-btn">Sign Up</div>
+                                </a>
+                            </div>
+                        </form>
+
+                        <form class="login-form login-pro-form d-custom-none col-md-5 mx-auto" id="proLoginStepTwo">
+                            <div class="form-heading">Sign In - Verify OTP</div>
+                            <div class="register-steps register-step2 mt-3">
+                                <div class="form-group">
+                                    <label for="otp_text">OTP</label>
+                                    <input type="text" id="otp_text" placeholder="Enter OTP" class="form-control" maxlength="6" name="otp">
+                                </div>
+                                <div class="form-group"></div>
+                                <label class="resend-seconds"> <span class></span> sec</label>
+                                <div class="cursor-pointer resend-btn">Resend OTP</div>
+                                <div class="form-group text-center mt-3">
+                                    <div class="go-back-btn btn login-btn">Go Back</div>
+                                    <button type="submit" id="verifyOTP" class="btn login-btn">Verify OTP</button>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+                <div class="col-md-6 offset-md-1">
+                    <h2>BMM PRO Benefits</h2>
+                    <ul class="common-list mt-4">
+                        <li>Free Listing</li>
+                        <li>Branding of Your Salon</li>
+                        <li>Brand Promotions</li>
+                        <li>Booking Management System</li>
+                        <li>Free Leads & Queries</li>
+                        <li>24*7 Toll Free Number</li>
+                        <li>Discounts & Deals</li>
+                        <li>Genuine Makeup Products</li>
+                        <li>Trainings & Workshops</li>
+                        <li>GST Benefits</li>
+                        <li>Product launch & Events</li>
+                        <li>Cobranding with Book MY Makeup</li>
+                        <li>Book MY Makeup Cards</li>
+                        <li>Influencers & Makeup Artists endorsements</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
+
+    <section class="get-started">
+        <div class="container">
+            <h4 class="text-center">Join BMM PRO</h4>
+            <div class="row get-started-row">
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <img src="../assets/images/get-started-step-1.png" class="img-fluid">
+                        <h5 class="mb-0 mt-3">Register</h5>
+                        <p class="pt-2">Are you a salon owner or a Makeup Artist,Register with us for a free listing.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <img src="../assets/images/get-started-step-2.png" class="img-fluid">
+                        <h5 class="mb-0 mt-3">Validation</h5>
+                        <p class="pt-2">Share your business details <br>with us to validate !</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <img src="../assets/images/get-started-step-3.png" class="img-fluid">
+                        <h5 class="mb-0 mt-3">Approved</h5>
+                        <p class="pt-2"> Once approved,Start getting <br>bookings and earn.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="our-partners pt-5 pb-5">
+        <div class="container">
+            <h2 class="text-center h2-heading">BMM PRO Partners</h2>
+
+            <div class="our-partners-slider owl-carousel owl-theme">
+
+                <div class="item">
+                    <div class="partner-logo-box">
+                        <img src="../assets/images/pro-brand-logo-1.png" alt="" />
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="partner-logo-box">
+                        <img src="../assets/images/pro-brand-logo-2.png" alt="" />
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="partner-logo-box">
+                        <img src="../assets/images/pro-brand-logo-3.png" alt="" />
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="partner-logo-box">
+                        <img src="../assets/images/pro-brand-logo-4.png" alt="" />
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="partner-logo-box">
+                        <img src="../assets/images/pro-brand-logo-5.png" alt="" />
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="partner-logo-box">
+                        <img src="../assets/images/pro-brand-logo-6.png" alt="" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    
     <?php include 'include/footer.php' ?>
     <script>
         let token = localStorage.getItem('salonToken');

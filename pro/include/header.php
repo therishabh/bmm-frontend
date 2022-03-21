@@ -720,7 +720,7 @@
                 <a href="index.php" class="logo"><img src="../assets/images/logo.png" class="img-fluid" alt=""></a>
             </div>
             <div class="col-md-5 offset-md-1 search-div">
-                <div class="input-group search-bar-main">
+                <!-- <div class="input-group search-bar-main">
                     <i class="fa fa-search seacrh-icons"></i>
                     <input type="text" class="form-control" placeholder="Salons, Makeup Artists, Bridal Makeup" aria-label="" aria-describedby="basic-addon1">
                     <div class="input-group-append">
@@ -728,7 +728,7 @@
                             Search
                         </button>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="search-bar">
                         <i class='fa fa-search seacrh-icons'></i>
                         <input type="text" class="form-control" placeholder="Search Salon, Makeup Artist...">

@@ -44,9 +44,9 @@
                         <div class="col-md">
                             <h3>Register <span class="float-right footer-down-arrow"><i class="fas fa-chevron-down"></i></span></h3>
                             <ul class="footer-links">
-                                <li><a href="pro/">BMM PRO</a></li>
-                                <li><a href="pro/">List your Salon</a></li>
-                                <li><a href="pro/">Register Makeup Artist</a></li>
+                                <li><a href="pro/pro-login.php">BMM PRO</a></li>
+                                <li><a href="pro/pro-login.php">List your Salon</a></li>
+                                <li><a href="pro/pro-login.php">Register Makeup Artist</a></li>
                                 <li><a href="influencer-program.php">Influencer Program</a></li>
                                 <li><a href="seller-registration.php">Makeup Trainers</a></li>
                             </ul>
