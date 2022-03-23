@@ -31,7 +31,26 @@
     <section class="login-section login-section-pro">
         <div class="container">
             <div class="row">
-                <div class="col-md-5">
+            <div class="col-md-6">
+                    <h2>BMM PRO Benefits</h2>
+                    <ul class="common-list mt-4">
+                        <li>Free Listing</li>
+                        <li>Branding of Your Salon</li>
+                        <li>Brand Promotions</li>
+                        <li>Booking Management System</li>
+                        <li>Free Leads & Queries</li>
+                        <li>24*7 Toll Free Number</li>
+                        <li>Discounts & Deals</li>
+                        <li>Genuine Makeup Products</li>
+                        <li>Trainings & Workshops</li>
+                        <li>GST Benefits</li>
+                        <li>Product launch & Events</li>
+                        <li>Cobranding with Book MY Makeup</li>
+                        <li>Book MY Makeup Cards</li>
+                        <li>Influencers & Makeup Artists endorsements</li>
+                    </ul>
+                </div>
+                <div class="col-md-5 offset-md-1">
                     <section class="login">
                         <form class="login-form login-pro-form" id="proLoginForm" autocomplete="off">
                             <div class="form-heading">Sign In</div>
@@ -83,25 +102,7 @@
                         </form>
                     </section>
                 </div>
-                <div class="col-md-6 offset-md-1">
-                    <h2>BMM PRO Benefits</h2>
-                    <ul class="common-list mt-4">
-                        <li>Free Listing</li>
-                        <li>Branding of Your Salon</li>
-                        <li>Brand Promotions</li>
-                        <li>Booking Management System</li>
-                        <li>Free Leads & Queries</li>
-                        <li>24*7 Toll Free Number</li>
-                        <li>Discounts & Deals</li>
-                        <li>Genuine Makeup Products</li>
-                        <li>Trainings & Workshops</li>
-                        <li>GST Benefits</li>
-                        <li>Product launch & Events</li>
-                        <li>Cobranding with Book MY Makeup</li>
-                        <li>Book MY Makeup Cards</li>
-                        <li>Influencers & Makeup Artists endorsements</li>
-                    </ul>
-                </div>
+                
             </div>
         </div>
     </section>
