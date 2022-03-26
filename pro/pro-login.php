@@ -177,6 +177,10 @@
 
         </div>
     </section>
+
+    <section class="partner-section">
+        <img src="../assets/images/login-section-pro-bg.jpg" alt="" />
+    </section>
     
     <?php include 'include/footer.php' ?>
     <script>
