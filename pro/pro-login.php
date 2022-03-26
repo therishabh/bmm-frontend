@@ -84,7 +84,7 @@
                             </div>
                         </form>
 
-                        <form class="login-form login-pro-form d-custom-none col-md-5 mx-auto" id="proLoginStepTwo">
+                        <form class="login-form login-pro-form d-custom-none" id="proLoginStepTwo">
                             <div class="form-heading">Sign In - Verify OTP</div>
                             <div class="register-steps register-step2 mt-3">
                                 <div class="form-group">

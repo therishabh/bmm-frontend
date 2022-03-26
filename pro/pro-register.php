@@ -90,7 +90,7 @@
                             </div>
                         </form>
 
-                        <form class="login-form login-pro-form d-custom-none col-md-5 mx-auto" id="proRegisterStepTwo">
+                        <form class="login-form login-pro-form d-custom-none" id="proRegisterStepTwo">
                             <div class="form-heading">Registration - Verify OTP</div>
                             <div class="register-steps register-step2 mt-3">
                                 <div class="form-group">
@@ -107,7 +107,7 @@
                             </div>
                         </form>
 
-                        <form class="login-form login-pro-form d-custom-none col-md-5 mx-auto" id="proRegisterStepThree">
+                        <form class="login-form login-pro-form d-custom-none" id="proRegisterStepThree">
                             <div class="form-heading">Registration - Set Password</div>
                             <div class="register-steps register-step3 mt-3">
                                 <div class="form-group">
