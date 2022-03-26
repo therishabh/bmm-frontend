@@ -1033,56 +1033,108 @@
                 <li><a href="#">Salon</a>
                     <div class="submenu">
 
-                        <div class="">
+                    <div class="">
                             <div class="row">
                                 <div class="col-md">
                                     <div class="menu-common-list">
-                                        <div class="nav-submenu-title">Services</ldiv>
-                                            <ul>
-                                                <li><a href="ladies-hair-styling.php">Hair Styling</a></li>
-                                                <li><a href="#">Make Up</a></li>
-                                                <li><a href="#">Hair Texture</a></li>
-                                                <!-- <li><a href="#">Hair Treatments</a></li> -->
-                                                <li><a href="#">Facials & Rituals</a></li>
-                                                <li><a href="#">Hand & Feet</a></li>
-                                                <li><a href="#">Nail Care</a></li>
-                                            </ul>
-                                        </div>
+                                        <div class="nav-submenu-title">Hair Styling</div>
+                                        <ul>
+                                            <li><a href="service-list.php">Hair Cut</a></li>
+                                            <li><a href="#">Ironing</a></li>
+                                            <li><a href="#">Global Colouring</a></li>
+                                            <li><a href="#">Blow Dry</a></li>
+                                            <li><a href="#">Root Touch Up</a></li>
+                                            <li><a href="#">Shampoo & Conditioning</a></li>
+                                            <li><a href="#">Head Massage</a></li>
+                                            <li><a href="#">Roller Setting</a></li>
+                                            <li><a href="#">Oiling</a></li>
+                                        </ul>
                                     </div>
-
                                 </div>
+                                
+                                <div class="col-md">
+                                    <div class="menu-common-list">
+                                        <div class="nav-submenu-title">Hair Texture</div>
+                                        <ul>
+                                            <li><a href="#">Rebonding</a></li>
+                                            <li><a href="#">Perming</a></li>
+                                            <li><a href="#">Keratin</a></li>
+                                            <li><a href="#">Colour Protection</a></li>
+                                            <li><a href="#">Smoothening</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="menu-common-list">
+                                        <div class="nav-submenu-title">Hair Treatments</div>
+                                        <ul>
+                                            <li><a href="#">Spa Treatments</a></li>
+                                            <li><a href="#">Volumizing</a></li>
+                                            <li><a href="#">Advanced Hair Moisturising</a></li>
+                                            <li><a href="#">Scalp Treatments</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                              
+                                <div class="col-md">
+                                    <div class="menu-common-list">
+                                        <div class="nav-submenu-title">Hand & Feet</div>
+                                        <ul>
+                                            <li><a href="#">Manicure</a></li>
+                                            <li><a href="#">Spa Pedicure</a></li>
+                                            <li><a href="#">Pedicure</a></li>
+                                            <li><a href="#">Waxing</a></li>
+                                            <li><a href="#">Spa Manicure</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="menu-common-list">
+                                        <div class="nav-submenu-title">Nail Care</div>
+                                        <ul>
+                                            <li><a href="#">Nail Paint</a></li>
+                                            <li><a href="#">Nail Art</a></li>
+                                            <li><a href="#">Nail Filling</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="menu-common-list">
+                                        <div class="nav-submenu-title">Make Up</div>
+                                        <ul>
+                                            <li><a href="#">Party Make Up</a></li>
+                                            <li><a href="#">Engagement Make Up</a></li>
+                                            <li><a href="#">Bridal & Reception Make Up</a></li>
+                                            <li><a href="#">Base Make Up</a></li>
+                                            <li><a href="#">Eye Make Up</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="menu-common-list">
+                                        <div class="nav-submenu-title">Facials & Rituals</div>
+                                        <ul>
+                                            <li><a href="#">Bleach</a></li>
+                                            <li><a href="#">Luxury Facials/Rituals</a></li>
+                                            <li><a href="#">Clean Ups</a></li>
+                                            <li><a href="#">Body Polishing/Rejuvenation</a></li>
+                                            <li><a href="#">Threading</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="menu-common-list">
+                                        <div class="nav-submenu-title">Recommended</div>
+                                        <ul>
+                                            <li><a href="hair-masters.php">Hair Masters</a></li>
+                                            <li><a href="#">Looks</a></li>
+                                            <li><a href="#">Geetanjali</a></li>
+                                            <li><a href="#">VLCC</a></li>
+                                            <li><a href="#">Jawed Habib</a></li>
+                                            <li><a href="#">Toni & Guy</a></li>
+                                            <li><a href="#">F Salon</a></li>
+                                            <li><a href="#">Alps Beauty</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <!-- <div class="col-md">
-                                    <div class="menu-common-list">
-                                        <div class="nav-submenu-title">Gents</ldiv>
-                                            <ul>
-                                                <li><a href="#">Hair Cut & Finish</a></li>
-                                                <li><a href="#">Hair Colour</a></li>
-                                                <li><a href="#">Hair Texture</a></li>
-                                                <li><a href="#">Hair Treatments</a></li>
-                                                <li><a href="#">Skin Care </a></li>
-                                                <li><a href="#">Beard Grooming</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <div class="col-md">
-                                    <div class="menu-common-list">
-                                        <div class="nav-submenu-title">Recommended</ldiv>
-                                            <ul>
-                                                <li><a href="hair-masters.php">Hair Masters</a></li>
-                                                <li><a href="#">Looks</a></li>
-                                                <li><a href="#">Geetanjali</a></li>
-                                                <li><a href="#">VLCC</a></li>
-                                                <li><a href="#">Jawed Habib</a></li>
-                                                <li><a href="#">Toni & Guy</a></li>
-                                                <li><a href="#">F Salon</a></li>
-                                                <li><a href="#">Alps Beauty</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md">
                                     <div class="menu-common-list">
                                         <div class="nav-submenu-title">BMM Cards</div>
                                         <ul>
@@ -1104,9 +1156,9 @@
                                             <li><a href="#">Free Nail Care</a></li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="col-md">
+                                <!-- <div class="col-md">
                                     <div class="salon-logos-list">
                                         <ul>
                                             <li>
@@ -1120,7 +1172,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
 
 
                                 <div class="col-md-3">
@@ -1129,7 +1181,6 @@
 
                             </div>
                         </div>
-
 
                     </div>
                 </li>
