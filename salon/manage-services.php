@@ -198,7 +198,7 @@
                     "category": $(this).parents('.card').find('.card-header').attr('data')
                 }
                 $.ajax({
-                    url: `${base_url}/salon/add-manual-service.php`,
+                    url: `${base_url}/salon/services/add-manual-service.php`,
                     type: 'POST',
                     dataType: 'JSON',
                     data: JSON.stringify(post_data),

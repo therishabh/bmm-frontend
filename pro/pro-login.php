@@ -31,7 +31,7 @@
     <section class="login-section login-section-pro">
         <div class="container">
             <div class="row">
-            <div class="col-md-6">
+                <div class="col-md-6">
                     <h2>BMM PRO Benefits</h2>
                     <ul class="common-list mt-4">
                         <li>Free Listing</li>
@@ -84,7 +84,7 @@
                             </div>
                         </form>
 
-                        <form class="login-form login-pro-form d-custom-none col-md-5 mx-auto" id="proLoginStepTwo">
+                        <form class="login-form login-pro-form d-custom-none mx-auto" id="proLoginStepTwo">
                             <div class="form-heading">Sign In - Verify OTP</div>
                             <div class="register-steps register-step2 mt-3">
                                 <div class="form-group">
@@ -102,7 +102,7 @@
                         </form>
                     </section>
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -177,7 +177,7 @@
 
         </div>
     </section>
-    
+
     <?php include 'include/footer.php' ?>
     <script>
         let token = localStorage.getItem('salonToken');
@@ -235,8 +235,8 @@
                     email_mobile: $("#proLoginForm [name=email_mobile]").val(),
                     category: $('#proLoginForm input[name=salonType]:checked').val()
                 }
-                $("#signin-with-otp-btn").attr('disabled', true);
                 if (!!post_data.email_mobile) {
+                    $("#signin-with-otp-btn").attr('disabled', true);
                     $.ajax({
                         url: base_url + 'salon/auth/login-with-otp.php',
                         type: 'POST',
@@ -251,6 +251,7 @@
                             resendSetInterval();
                         },
                         error: function(error) {
+                            $("#signin-with-otp-btn").removeAttr('disabled');
                             toastr.error(error.responseJSON.message);
                         }
                     });
