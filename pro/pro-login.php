@@ -84,7 +84,7 @@
                             </div>
                         </form>
 
-                        <form class="login-form login-pro-form d-custom-none mx-auto" id="proLoginStepTwo">
+                        <form class="login-form login-pro-form d-custom-none" id="proLoginStepTwo">
                             <div class="form-heading">Sign In - Verify OTP</div>
                             <div class="register-steps register-step2 mt-3">
                                 <div class="form-group">
@@ -176,6 +176,10 @@
 
 
         </div>
+    </section>
+
+    <section class="partner-section">
+        <img src="../assets/images/login-section-pro-bg.jpg" alt="" />
     </section>
 
     <?php include 'include/footer.php' ?>

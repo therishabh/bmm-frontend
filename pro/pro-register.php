@@ -90,6 +90,7 @@
                                 </div>
                             </form>
 
+<<<<<<< HEAD
                             <form class="login-form login-pro-form d-custom-none mx-auto" id="proRegisterStepTwo">
                                 <div class="form-heading">Registration - Verify OTP</div>
                                 <div class="register-steps register-step2 mt-3">
@@ -104,9 +105,25 @@
                                         <div class="go-back-btn btn login-btn">Go Back</div>
                                         <button type="submit" id="verifyOTP" class="btn login-btn">Verify OTP</button>
                                     </div>
+=======
+                        <form class="login-form login-pro-form d-custom-none" id="proRegisterStepTwo">
+                            <div class="form-heading">Registration - Verify OTP</div>
+                            <div class="register-steps register-step2 mt-3">
+                                <div class="form-group">
+                                    <label for="otp_text">OTP</label>
+                                    <input type="text" id="otp_text" placeholder="Enter OTP" class="form-control" maxlength="6" name="otp">
+                                </div>
+                                <div class="form-group"></div>
+                                <label class="resend-seconds"> <span class></span> sec</label>
+                                <div class="cursor-pointer resend-btn">Resend OTP</div>
+                                <div class="form-group text-center mt-3">
+                                    <div class="go-back-btn btn login-btn">Go Back</div>
+                                    <button type="submit" id="verifyOTP" class="btn login-btn">Verify OTP</button>
+>>>>>>> 1319c3e6e6ffc143bdb80daf6fe6fff84d13449a
                                 </div>
                             </form>
 
+<<<<<<< HEAD
                             <form class="login-form login-pro-form d-custom-none mx-auto" id="proRegisterStepThree">
                                 <div class="form-heading">Registration - Set Password</div>
                                 <div class="register-steps register-step3 mt-3">
@@ -119,6 +136,14 @@
                                         <input type="password" id="confirm_password" placeholder="Confirm Password" class="form-control" name="confirmPassword">
                                     </div>
                                     <div class="form-group text-center"><button type="submit" id="stepThreeSubmitBtn" class="btn login-btn">Submit</button></div>
+=======
+                        <form class="login-form login-pro-form d-custom-none" id="proRegisterStepThree">
+                            <div class="form-heading">Registration - Set Password</div>
+                            <div class="register-steps register-step3 mt-3">
+                                <div class="form-group">
+                                    <label for="new_password">New Password</label>
+                                    <input type="password" id="new_password" placeholder="Enter Password" class="form-control" name="password">
+>>>>>>> 1319c3e6e6ffc143bdb80daf6fe6fff84d13449a
                                 </div>
                             </form>
                         </div>
@@ -198,6 +223,10 @@
 
 
         </div>
+    </section>
+
+    <section class="partner-section">
+        <img src="../assets/images/login-section-pro-bg.jpg" alt="" />
     </section>
 
     <?php include 'include/footer.php' ?>

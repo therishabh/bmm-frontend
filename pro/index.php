@@ -5,16 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/images/fav.png" type="image/x-icon">
+    <meta http-equiv="refresh" content="0;URL='pro-login.php'" />    
     <title>Book My Makeup</title>
     <?php include 'include/head.php' ?>
 </head>
 
 <body>
-    <?php include 'include/header.php' ?>
-
+<!-- 
     <section class="slide-section">
         <div id="slides" class="carousel slide" data-ride="carousel">
-            <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="../assets/images/pro-slide1.jpg" alt="">
@@ -140,9 +139,8 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <?php include 'include/footer.php' ?>
     <script>
         let token = localStorage.getItem('salonToken');
         if (token) {
